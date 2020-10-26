@@ -121,7 +121,7 @@ resource "aws_cloudwatch_metric_alarm" "this" {
 
   metric_name       = aws_cloudwatch_log_metric_filter.this[each.key].id
   namespace         = lookup(each.value, "namespace", var.namespace)
-  alarm_name        = "${each.value["name"]}"
+  alarm_name        = each.value["name"]
   alarm_description = lookup(each.value, "description", null)
 
   actions_enabled           = lookup(each.value, "actions_enabled", var.actions_enabled)
